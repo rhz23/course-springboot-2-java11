@@ -15,7 +15,7 @@ import java.util.List;
 @Configuration
 //a anotation abaixo indica o profile que utilizará essa configuração, neste caso o profile de "test", o nome tem que ser igual ao nome utilizado na application.properties do profile especifico (neste caso do application-test.properties)
 @Profile("test")
-public class TestConfig  implements CommandLineRunner {
+public class TestConfig implements CommandLineRunner {
 
     //o comando abaixo utiliza recursos do springboot para resolver essa dependencia e associar uma instancia de userRepository
     @Autowired
