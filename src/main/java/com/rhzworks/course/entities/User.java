@@ -11,8 +11,6 @@ import java.util.Objects;
 @Table(name = "tb_user")
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,7 +34,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @Id
     public Long getId() {
         return id;
     }
