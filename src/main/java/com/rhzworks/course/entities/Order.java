@@ -8,6 +8,14 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+
+/**
+ * @autor Rodrigo H Zaninelli
+ * @version 1.0.0
+ * @since 01/02/2020
+ * @see Instant
+ */
+
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
@@ -28,6 +36,15 @@ public class Order implements Serializable {
     public Order(){
     }
 
+    /**
+     * Construtor de classe
+     *
+     * @param id    id of the object, auto generate when created at the database
+     * @param moment    day and time when the order is generated
+     * @param orderStatus   status of the order
+     * @see OrderStatus
+     * @param client    client that made the order
+     */
     public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
         this.id = id;
         this.moment = moment;

@@ -1,0 +1,7 @@
+com.rhzworks.course
+com.rhzworks.course.config
+com.rhzworks.course.entities
+com.rhzworks.course.entities.enums
+com.rhzworks.course.repositories
+com.rhzworks.course.resources
+com.rhzworks.course.services

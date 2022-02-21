@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.rhzworks.course"},{"l":"com.rhzworks.course.config"},{"l":"com.rhzworks.course.entities"},{"l":"com.rhzworks.course.entities.enums"},{"l":"com.rhzworks.course.repositories"},{"l":"com.rhzworks.course.resources"},{"l":"com.rhzworks.course.services"}]
