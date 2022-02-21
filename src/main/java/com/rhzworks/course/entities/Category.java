@@ -1,5 +1,7 @@
 package com.rhzworks.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -15,7 +17,9 @@ public class Category implements Serializable {
     private Long id;
     private String name;
 
-    @Transient
+    //@JsonIgnore usando aqui em category de forma que seja evitado um Loop em uma requisição GET em category ou product e de forma ao product mostrar a category associada, mas a category não mostrar os produtos que são associados a ela quando listada as categorias.
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories")
     private Set<Product> products = new HashSet<>();
 
     public Category(){
