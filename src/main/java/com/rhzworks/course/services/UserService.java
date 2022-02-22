@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,9 +45,14 @@ public class UserService {
 
     //findById vai no banco de dados e traz o objeto em questão, enquanto o getById somente prepara o objeto monitorado para ser trabalhado e depois efetuar uma operação com banco de dados (mais eficiente usar desta forma)
     public User update(Long id, User obj){
-        User entity = repository.getById(id);
-        updateData(entity, obj);
-        return repository.save(entity);
+        try{
+            User entity = repository.getById(id);
+            updateData(entity, obj);
+            return repository.save(entity);
+        }catch(EntityNotFoundException e){
+            throw new ResourceNotFoundException(id);
+        }
+
     }
 
     private void updateData(User entity, User obj) {
