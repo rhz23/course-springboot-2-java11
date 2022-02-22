@@ -32,5 +32,18 @@ public class UserService {
         repository.deleteById(id);
     }
 
+    //findById vai no banco de dados e traz o objeto em questão, enquanto o getById somente prepara o objeto monitorado para ser trabalhado e depois efetuar uma operação com banco de dados (mais eficiente usar desta forma)
+    public User update(Long id, User obj){
+        User entity = repository.getById(id);
+        updateData(entity, obj);
+        return repository.save(entity);
+    }
+
+    private void updateData(User entity, User obj) {
+        entity.setName(obj.getName());
+        entity.setEmail(obj.getEmail());
+        entity.setPhone(obj.getPhone());
+    }
+
 
 }
