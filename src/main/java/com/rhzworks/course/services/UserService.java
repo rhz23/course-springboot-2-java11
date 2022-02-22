@@ -2,8 +2,11 @@ package com.rhzworks.course.services;
 
 import com.rhzworks.course.entities.User;
 import com.rhzworks.course.repositories.UserRepository;
+import com.rhzworks.course.services.exceptions.DatabaseException;
 import com.rhzworks.course.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +33,13 @@ public class UserService {
     }
 
     public void delete(Long id){
-        repository.deleteById(id);
+        try{
+            repository.deleteById(id);
+        }catch(EmptyResultDataAccessException e){
+            throw new ResourceNotFoundException(id);
+        }catch(DataIntegrityViolationException e){
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     //findById vai no banco de dados e traz o objeto em questão, enquanto o getById somente prepara o objeto monitorado para ser trabalhado e depois efetuar uma operação com banco de dados (mais eficiente usar desta forma)
